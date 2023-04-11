@@ -6,8 +6,8 @@ from PyQt5.QtCore import Qt, pyqtSlot
 from pydm import Display
 
 # Storing magic numbers as constants is clean living
-CHECKBOX_A_KEY = "A"
-CHECKBOX_B_KEY = "B"
+CHECKBOX_A_KEY = "Option A"
+CHECKBOX_B_KEY = "Option B"
 
 
 class SimpleGUI(Display):
@@ -31,10 +31,12 @@ class SimpleGUI(Display):
         super().__init__(parent=parent, args=args)
         
         # A dictionary to store the checked state of our checkboxes
-        self.checked_dict: Dict = {CHECKBOX_A_KEY: False, CHECKBOX_B_KEY: False}
+        self.checked_dict: Dict[str, str] = {CHECKBOX_A_KEY: "Not Checked",
+                                             CHECKBOX_B_KEY: "Not Checked"}
         
         # The following three object names came from the UI file
         # Here we're connecting their native signals to custom slots
+        # https://www.pythonguis.com/tutorials/pyqt-signals-slots-events/
         
         # https://doc.qt.io/qt-6/qabstractbutton.html#clicked
         self.ui.push_button.clicked.connect(self.display_options)
@@ -45,6 +47,9 @@ class SimpleGUI(Display):
                                                         CHECKBOX_A_KEY))
         self.ui.checkbox_b.stateChanged.connect(partial(self.manage_options,
                                                         CHECKBOX_B_KEY))
+        
+        # initializing the status label so that it prints the initial state
+        self.display_options()
     
     @pyqtSlot(int)
     def manage_options(self, key: str, checked_state: int):
@@ -54,7 +59,8 @@ class SimpleGUI(Display):
         :param checked_state: Comes from the emitted signal
         :return:
         """
-        self.checked_dict[key] = True if checked_state == Qt.Checked else False
+        self.checked_dict[key] = ("Checked" if checked_state == Qt.Checked
+                                  else "Not Checked")
     
     @pyqtSlot()
     def display_options(self):
