@@ -10,6 +10,8 @@ CHECKBOX_A_KEY = "Option A"
 CHECKBOX_B_KEY = "Option B"
 
 
+# Class names are typically cap case
+# https://peps.python.org/pep-0008/#class-names
 class SimpleGUI(Display):
     
     def ui_filename(self):
