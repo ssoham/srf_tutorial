@@ -1,0 +1,6 @@
+INDIVIDUAL SOLUTIONS IN THIS FOLDER
+
+1) mkdir [your name]
+2) cp -r ../simple [your name]/.
+3) cp -r ../pv_readout [your name]/.
+4) do your work in these subdirectories

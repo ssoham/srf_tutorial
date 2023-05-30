@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>234</width>
-    <height>50</height>
+    <width>207</width>
+    <height>44</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,7 +23,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>CM01 ADES:</string>
+      <string>CM01 Cavity 1 ADES:</string>
      </property>
     </widget>
    </item>
