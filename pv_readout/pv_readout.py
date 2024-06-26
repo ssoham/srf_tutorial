@@ -1,5 +1,5 @@
 from pydm import Display
-
+from PyQt5.QtCore import pyqtSlot
 
 class PVReadoutGUI(Display):
     
@@ -7,11 +7,16 @@ class PVReadoutGUI(Display):
         """
         Your code here
         """
-        return "example.ui"
+        return "pv_readout.ui"
     
     def __init__(self, parent=None, args=None):
-        super().__init__(parent=parent, args=args, ui_filename="example.ui")
+        super().__init__(parent=parent, args=args, ui_filename="pv_readout.ui")
         """
         Your code here
         """
-        self.ui.example_pydm_spinbox.channel = "ACCL:L0B:0110:ADES"
+        self.ui.input_to_display.returnPressed.connect(self.update)
+
+    @pyqtSlot()
+    def update(self):
+        self.ui.output_label.channel = self.ui.input_to_display.text()
+    # .channel = "ACCL:L0B:0110:ADES"
