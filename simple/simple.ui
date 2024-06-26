@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>337</width>
-    <height>103</height>
+    <height>214</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>SRF Tutorial</string>
+   <string>Checkbox Tutorial</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="1">
@@ -23,15 +23,11 @@
    </item>
    <item row="2" column="1" colspan="2">
     <widget class="QPushButton" name="push_button">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="text">
       <string>Update Status</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2">
-    <widget class="QCheckBox" name="checkbox_b">
-     <property name="text">
-      <string>Option B</string>
      </property>
     </widget>
    </item>
@@ -65,8 +61,51 @@
      </item>
     </layout>
    </item>
+   <item row="1" column="2">
+    <widget class="QCheckBox" name="checkbox_b">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string>Option B</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>checkbox_b</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>output_label</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>210</x>
+     <y>25</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>235</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkbox_a</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>output_label</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>83</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>135</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
